@@ -1,4 +1,4 @@
-USE agencias
+USE agencias;
 SELECT 
     i.I_data                                AS [Fecha],
     i.Id_incidencia                         AS [I_Incidencia],
