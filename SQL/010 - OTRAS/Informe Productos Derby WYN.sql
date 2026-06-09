@@ -1,0 +1,44 @@
+DECLARE @HOTELES2024 TABLE (HOTEL nvarchar(240), NUM_RES INT);
+DECLARE @HOTELES2025 TABLE (HOTEL nvarchar(240), NUM_RES INT);
+
+INSERT INTO @HOTELES2024
+SELECT 
+RAE_AlojaID,
+COUNT(Id_LRe) AS [NUM RES]
+FROM TBL_ReservaAlojamientoExterno 
+WHERE RAE_TipoProducto = 'DYS6' AND (Feccre BETWEEN '2024-01-01' AND '2025-01-01')
+GROUP BY RAE_AlojaID
+ORDER BY [NUM RES] DESC
+
+INSERT INTO @HOTELES2025
+SELECT 
+RAE_AlojaID,
+COUNT(Id_LRe) AS [NUM RES]
+FROM TBL_ReservaAlojamientoExterno 
+WHERE RAE_TipoProducto = 'DYS6' AND (Feccre BETWEEN '2025-03-31' AND '2025-07-31')
+GROUP BY RAE_AlojaID
+ORDER BY [NUM RES] DESC
+
+SELECT COUNT(HOTEL) NUM_HOTELS_2024, SUM(NUM_RES) NUM_RES_2024 FROM @HOTELES2024
+SELECT COUNT(HOTEL) NUM_HOTELS_DESDE_ABRIL_2025, SUM(NUM_RES) NUM_RES_DESDE_ABRIL_2025 FROM @HOTELES2025
+
+
+
+--SELECT 
+--RAE_AlojaID,
+--Id_LRe,
+--CAST(RAE_ReservaExterna AS XML).value('(XML/RoomTypeCode)[1]', 'VARCHAR(MAX)')			AS [RoomTypeCode],
+--CAST(RAE_ReservaExterna AS XML).value('(XML/RatePlanCode)[1]', 'VARCHAR(MAX)')			AS [RatePlanCode]
+--FROM TBL_ReservaAlojamientoExterno 
+--WHERE RAE_TipoProducto = 'DYS6' AND (Feccre BETWEEN '2024-01-01' AND '2025-01-01')
+
+--SELECT 
+--RAE_AlojaID,
+--Id_LRe,
+--CAST(RAE_ReservaExterna AS XML).value('(XML/RoomTypeCode)[1]', 'VARCHAR(MAX)')			AS [RoomTypeCode],
+--CAST(RAE_ReservaExterna AS XML).value('(XML/RatePlanCode)[1]', 'VARCHAR(MAX)')			AS [RatePlanCode]
+--FROM TBL_ReservaAlojamientoExterno 
+--WHERE RAE_TipoProducto = 'DYS6' AND (Feccre BETWEEN '2025-03-31' AND '2025-07-31')
+
+
+

@@ -1,0 +1,28 @@
+[
+    {
+        "_id": {
+            "$oid": "asfasgasgas"
+        },
+        "Empresa": "BGT",
+        "Departamento": "Team",
+        "NombreDepartamento": "1241",
+        "status": 1,
+        "Personal": [
+            {
+                "Nombre": "Jose",
+                "Apellido": "Bausa",
+                "status": 0
+            },
+            {
+                "Nombre": "Miquel",
+                "Apellido": "Gaya",
+                "status": 0
+            },
+            {
+                "Nombre": "Eduard",
+                "Apellido": "Feijoo",
+                "status": 0
+            }
+        ]
+]
+

@@ -1,0 +1,14 @@
+SELECT * FROM Tbl_AlojaSupplierPushConfig WHERE Id_SuP = /*9 --W2M SABRE*/ 20 --ROIBOS SABRE
+
+
+SELECT
+* 
+FROM
+Tbl_AlojaSupplierPushElemento ASPE
+INNER JOIN Tbl_AlojaSupplierPushPoliticaCancelacion ASPPC ON ASPPC.Id_SPE = ASPE.Id_SPE
+WHERE
+1 = 1
+--AND ASPE.SPE_CodCliente = /*3129 --W2M SABRE*/ 3016 --ROIBOS SABRE
+AND ASPE.Id_SuP = /*9 --W2M SABRE*/ 20 --ROIBOS SABRE
+AND ASPPC.SPC_Codigo = 'NRF'
+ORDER BY 1 ASC

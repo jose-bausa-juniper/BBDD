@@ -1,0 +1,23 @@
+--USE BD_Nincoming_986638_DBarreiro_20241204
+SELECT C.Cli_Nombre,R.Res_Estado, Res_FechaInicioViaje,Res_FechaFinViaje,Res_Fecha,* 
+FROM Tbl_Reserva R 
+INNER JOIN Tbl_Cliente C ON C.id_Cli = R.Id_Age
+WHERE 1 = 1 
+AND R.UsrCre = 8344 
+AND Res_Fecha BETWEEN '2024-10-01' AND '2025-01-08'
+AND Id_Res NOT IN (24800069 
+,24800070 
+,24800075
+,24800076
+,24800081
+,24800084
+,24800086
+,24800087
+,24800089
+,24800090
+,24800091
+,24800092)
+--AND Res_Localizador = 'HC115Z' 
+
+
+SELECT * FROM Tbl_AuditUser WHERE Id_Aus = 8344

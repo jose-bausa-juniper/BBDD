@@ -1,0 +1,1 @@
+SELECT * FROM Tbl_AlojamientoExterno WHERE AlE_Prov IN ('J667','HMT','C503') AND ALU_JPCode = 'JP993312'

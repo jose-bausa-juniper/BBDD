@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\000 - BACKOFFICE",
+    "\\000 - BACKOFFICE\\01 - Alojamiento",
+    "\\000 - BACKOFFICE\\01 - Alojamiento\\EXTERNO",
+    "\\000 - BACKOFFICE\\01 - Alojamiento\\EXTERNO\\ARI\\Avantio",
+    "\\000 - BACKOFFICE\\01 - Alojamiento\\PUSH EXTERNO",
+    "\\000 - BACKOFFICE\\01 - Alojamiento\\PUSH JUNIPER",
+    "\\000 - BACKOFFICE\\01 - Alojamiento\\PUSH JUNIPER\\Importacion Reservas",
+    "\\000 - BACKOFFICE\\01 - Alojamiento\\PUSH JUNIPER\\Importacion Reservas\\Extranet Juniper",
+    "\\000 - BACKOFFICE\\01 - Alojamiento\\PUSH JUNIPER\\Importacion Reservas\\Extranet Juniper\\AVANTIO"
+  ],
+  "SelectedNode": "\\000 - BACKOFFICE\\01 - Alojamiento\\PUSH JUNIPER\\Importacion Reservas\\Extranet Juniper\\AVANTIO\\4_Info.sql",
+  "PreviewInSolutionExplorer": false
+}

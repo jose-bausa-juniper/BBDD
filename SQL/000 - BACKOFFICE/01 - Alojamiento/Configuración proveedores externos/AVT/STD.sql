@@ -1,0 +1,1 @@
+SELECT ALU_JPCode,AlE_Prov,AlE_Cod,AlE_Nombre,AlE_NombreZona FROM BD_Nincoming.dbo.vwQlik_JP_Externos WHERE AlE_Prov = 'AVT' AND AlE_Nombre LIKE '%bego%'

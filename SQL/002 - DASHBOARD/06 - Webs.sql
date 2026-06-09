@@ -1,0 +1,256 @@
+DECLARE @TodasSubidas TABLE (
+    WEB VARCHAR(10),
+    USUARIO VARCHAR(100),
+    COMENTARIO NVARCHAR(MAX),
+    FICHERO VARBINARY(MAX),
+    FECHA_PRE DATETIME,
+    ENTORNO VARCHAR(10),
+    OPERACION VARCHAR(50),
+    DLLS VARCHAR(200),
+    PROCESO INT
+);
+
+DECLARE @UltimasWWW TABLE (
+    WEB VARCHAR(10),
+    USUARIO VARCHAR(100),
+    COMENTARIO NVARCHAR(MAX),
+    FICHERO VARBINARY(MAX),
+    FECHA_PRE DATETIME,
+    ENTORNO VARCHAR(10),
+    OPERACION VARCHAR(50),
+    DLLS VARCHAR(200),
+    PROCESO INT,
+    rn INT
+);
+
+DECLARE @UltimaWWW TABLE (
+    WEB VARCHAR(10),
+    USUARIO VARCHAR(100),
+    COMENTARIO NVARCHAR(MAX),
+    FICHERO VARBINARY(MAX),
+    FECHA_PRE DATETIME,
+    ENTORNO VARCHAR(10),
+    OPERACION VARCHAR(50),
+    DLLS VARCHAR(200),
+    PROCESO INT,
+    rn INT
+);
+
+DECLARE @PenultimaWWW TABLE (
+    WEB VARCHAR(10),
+    USUARIO VARCHAR(100),
+    COMENTARIO NVARCHAR(MAX),
+    FICHERO VARBINARY(MAX),
+    FECHA_PRE DATETIME,
+    ENTORNO VARCHAR(10),
+    OPERACION VARCHAR(50),
+    DLLS VARCHAR(200),
+    PROCESO INT,
+    rn INT
+);
+
+DECLARE @UltimaPRE TABLE (
+    WEB VARCHAR(10),
+    USUARIO VARCHAR(100),
+    COMENTARIO NVARCHAR(MAX),
+    FICHERO VARBINARY(MAX),
+    FECHA_PRE DATETIME,
+    ENTORNO VARCHAR(10),
+    OPERACION VARCHAR(50),
+    DLLS VARCHAR(200),
+    PROCESO INT,
+    rn INT
+);
+
+DECLARE @PREAntesDeUltimaWWW TABLE (
+    WEB VARCHAR(10),
+    USUARIO VARCHAR(100),
+    COMENTARIO NVARCHAR(MAX),
+    FICHERO VARBINARY(MAX),
+    FECHA_PRE DATETIME,
+    ENTORNO VARCHAR(10),
+    OPERACION VARCHAR(50),
+    DLLS VARCHAR(200),
+    PROCESO INT,
+    FECHA_WWW DATETIME,
+    TIPO VARCHAR(50)
+);
+
+DECLARE @PREAntesDePenultimaWWW TABLE (
+    WEB VARCHAR(10),
+    USUARIO VARCHAR(100),
+    COMENTARIO NVARCHAR(MAX),
+    FICHERO VARBINARY(MAX),
+    FECHA_PRE DATETIME,
+    ENTORNO VARCHAR(10),
+    OPERACION VARCHAR(50),
+    DLLS VARCHAR(200),
+    PROCESO INT,
+    FECHA_WWW DATETIME,
+    TIPO VARCHAR(50)
+);
+
+DECLARE @PREsFiltrados TABLE (
+    WEB VARCHAR(10),
+    USUARIO VARCHAR(100),
+    COMENTARIO NVARCHAR(MAX),
+    FICHERO VARBINARY(MAX),
+    FECHA_PRE DATETIME,
+    ENTORNO VARCHAR(10),
+    OPERACION VARCHAR(50),
+    DLLS VARCHAR(200),
+    PROCESO INT,
+    FECHA_WWW DATETIME,
+    TIPO VARCHAR(50),
+    rn INT
+);
+
+DECLARE @CasuisiticaPorWEB TABLE (
+    WEB VARCHAR(10),
+    UltimaPRE DATETIME,
+    UltimaWWW DATETIME,
+    CASUISTICA VARCHAR(10)
+);
+
+DECLARE @Resultado TABLE (
+    WEB VARCHAR(10),
+    USUARIO VARCHAR(100),
+    COMENTARIO NVARCHAR(MAX),
+    FICHERO VARBINARY(MAX),
+    FECHA_PRE DATETIME,
+    ENTORNO VARCHAR(10),
+    OPERACION VARCHAR(50),
+    DLLS VARCHAR(200),
+    PROCESO INT,
+    TIPO VARCHAR(50),
+    CASUISTICA VARCHAR(10),
+    FECHA_WWW DATETIME
+);
+
+
+-- Tabla intermedia: TodasSubidas
+SELECT
+    CASE W.id_web
+        WHEN 1278 THEN 'DMC'
+        WHEN 2009 THEN 'NEXT'
+        WHEN 1920 THEN 'FLOWO'
+    END AS WEB,
+    U.U_nom AS USUARIO,
+    B.bak_comentario AS COMENTARIO,
+    B.bak_fichero AS FICHERO,
+    B.Feccre AS FECHA_PRE,
+    B.bak_entorno AS ENTORNO,
+    B.bak_operacion AS OPERACION,
+    B.bak_dlls AS DLLS,
+    B.bck_id_proceso AS PROCESO
+INTO #TodasSubidas
+FROM Tbl_Web W
+INNER JOIN Tbl_Backups B ON B.Id_web = W.id_WEB
+INNER JOIN agencias.dbo.usuari U ON U.id_Usuari = B.Id_usuario
+WHERE W.ID_BDD = 107
+  AND W.id_WEB IN (1278, 2009, 1920)
+  AND B.bak_entorno IN ('WWW', 'PRE');
+
+-- Tabla intermedia: UltimasWWW
+SELECT *, ROW_NUMBER() OVER (PARTITION BY WEB ORDER BY FECHA_PRE DESC) AS rn
+INTO #UltimasWWW
+FROM #TodasSubidas
+WHERE ENTORNO = 'WWW';
+
+-- Tabla intermedia: UltimaWWW
+SELECT * INTO #UltimaWWW FROM #UltimasWWW WHERE rn = 1;
+
+-- Tabla intermedia: PenultimaWWW
+SELECT * INTO #PenultimaWWW FROM #UltimasWWW WHERE rn = 2;
+
+-- Tabla intermedia: UltimaPRE
+SELECT * INTO #UltimaPRE
+FROM (
+    SELECT *, ROW_NUMBER() OVER (PARTITION BY WEB ORDER BY FECHA_PRE DESC) AS rn
+    FROM #TodasSubidas
+    WHERE ENTORNO = 'PRE'
+) p
+WHERE rn = 1;
+
+-- Tabla intermedia: PREAntesDeUltimaWWW
+SELECT p.*, w.FECHA_PRE AS FECHA_WWW, 'PRE antes de última WWW' AS TIPO
+INTO #PREAntesDeUltimaWWW
+FROM #TodasSubidas p
+JOIN #UltimaWWW w ON p.WEB = w.WEB AND p.FECHA_PRE < w.FECHA_PRE
+WHERE p.ENTORNO = 'PRE';
+
+-- Tabla intermedia: PREAntesDePenultimaWWW
+SELECT p.*, w.FECHA_PRE AS FECHA_WWW, 'PRE antes de penúltima WWW' AS TIPO
+INTO #PREAntesDePenultimaWWW
+FROM #TodasSubidas p
+JOIN #PenultimaWWW w ON p.WEB = w.WEB AND p.FECHA_PRE < w.FECHA_PRE
+WHERE p.ENTORNO = 'PRE';
+
+-- Tabla intermedia: PREsFiltrados
+SELECT * INTO #PREsFiltrados
+FROM (
+    SELECT *, ROW_NUMBER() OVER (PARTITION BY WEB, TIPO ORDER BY FECHA_WWW DESC, FECHA_PRE DESC) AS rn
+    FROM (
+        SELECT * FROM #PREAntesDeUltimaWWW
+        UNION ALL
+        SELECT * FROM #PREAntesDePenultimaWWW
+    ) x
+) y
+WHERE rn = 1;
+
+-- Tabla intermedia: CasuisiticaPorWEB
+SELECT WEB,
+       MAX(CASE WHEN ENTORNO = 'PRE' THEN FECHA_PRE ELSE NULL END) AS UltimaPRE,
+       MAX(CASE WHEN ENTORNO = 'WWW' THEN FECHA_PRE ELSE NULL END) AS UltimaWWW,
+       CASE 
+           WHEN MAX(CASE WHEN ENTORNO = 'PRE' THEN FECHA_PRE ELSE NULL END) >
+                MAX(CASE WHEN ENTORNO = 'WWW' THEN FECHA_PRE ELSE NULL END)
+           THEN 'PRE'
+           ELSE 'WWW'
+       END AS CASUISTICA 
+INTO #CasuisiticaPorWEB
+FROM #TodasSubidas
+GROUP BY WEB;
+
+-- Tabla intermedia: Resultado
+SELECT 
+    p.WEB, p.USUARIO, p.COMENTARIO, p.FICHERO, p.FECHA_PRE, p.ENTORNO, p.OPERACION, p.DLLS, p.PROCESO,
+    'Último PRE' AS TIPO,
+    c.CASUISTICA ,
+    CAST(NULL AS DATETIME) AS FECHA_WWW
+INTO #Resultado
+FROM #UltimaPRE p
+JOIN #CasuisiticaPorWEB c ON p.WEB = c.WEB
+WHERE c.CASUISTICA = 'PRE'
+
+UNION ALL
+
+SELECT 
+    p.WEB, p.USUARIO, p.COMENTARIO, p.FICHERO, p.FECHA_PRE, p.ENTORNO, p.OPERACION, p.DLLS, p.PROCESO,
+    p.TIPO,
+    c.CASUISTICA ,
+    p.FECHA_WWW
+FROM #PREsFiltrados p
+JOIN #CasuisiticaPorWEB c ON p.WEB = c.WEB
+WHERE (c.CASUISTICA = 'PRE' AND p.TIPO = 'PRE antes de última WWW')
+   OR (c.CASUISTICA = 'WWW' AND p.TIPO IN ('PRE antes de última WWW', 'PRE antes de penúltima WWW'));
+
+-- Resultado final
+SELECT 
+    WEB,
+    USUARIO,
+    ENTORNO,
+    TIPO,
+    DLLS,
+    PROCESO,
+    FECHA_PRE,
+    COMENTARIO,
+    FECHA_WWW
+FROM #Resultado
+ORDER BY WEB, FECHA_PRE DESC;
+
+-- Limpieza de tablas temporales
+DROP TABLE IF EXISTS 
+    #TodasSubidas, #UltimasWWW, #UltimaWWW, #PenultimaWWW, #UltimaPRE,
+    #PREAntesDeUltimaWWW, #PREAntesDePenultimaWWW, #PREsFiltrados,
+    #CasuisiticaPorWEB, #Resultado;

@@ -1,0 +1,33 @@
+WITH CLIENTES AS (
+ SELECT Id_BDD, BDD_Empresa
+ FROM BD_BookingEngine.dbo.Tbl_BaseDatos
+),
+SITES AS (
+ SELECT 
+  id_BDD,
+  id_WEB,
+  SUBSTRING(WEB_url, CHARINDEX('//', WEB_url) + 2, CHARINDEX('/', WEB_url + '/', CHARINDEX('//', WEB_url) + 2) - CHARINDEX('//', WEB_url) - 2) AS SITE,
+  CASE web_Tipo WHEN '' THEN 'WWW' ELSE web_Tipo END AS TIPO,
+  CASE WHEN CHARINDEX('/', REVERSE(web_urlproyectogit)) > 0 THEN RIGHT(web_urlproyectogit, CHARINDEX('/', REVERSE(web_urlproyectogit)) - 1) ELSE NULL END AS GIT
+ FROM BD_BookingEngine.dbo.Tbl_Web
+),
+SITES_CLIENTE AS (
+ SELECT C.Id_BDD, C.BDD_Empresa, S.id_WEB, S.[SITE], S.TIPO, S.GIT
+ FROM SITES S
+ INNER JOIN CLIENTES C ON S.id_BDD = C.Id_BDD
+),
+GITS_SITE AS (
+ SELECT id_WEB, GIT
+ FROM SITES
+ WHERE GIT IS NOT NULL
+ UNION ALL
+ SELECT id_WEB, 'BookingEngine'
+ FROM SITES
+),
+GITS_SITES_CLIENTE AS (
+ SELECT SC.Id_BDD, SC.BDD_Empresa, SC.id_WEB, SC.[SITE], SC.TIPO, GS.GIT
+ FROM GITS_SITE GS
+ INNER JOIN SITES_CLIENTE SC ON SC.id_WEB = GS.id_WEB
+)
+SELECT Id_BDD, BDD_Empresa, id_WEB, [SITE], TIPO, GIT
+FROM GITS_SITES_CLIENTE

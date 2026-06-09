@@ -1,0 +1,23 @@
+SELECT 
+		CCU_PADRE.Id_Alo					AS ID_ALO, 
+		INA.IAl_Nombre						AS ALO_NOMBRE,
+		CCU_PADRE.Id_CCu					AS CCU_PADRE,
+		CCU_PADRE.Ccu_Nombre				AS CCU_PADRE_NOMBRE,
+
+		CCO_PADRE.Id_CCo					AS CCO_PADRE, 
+		CCO_PADRE.CCo_Nombre				AS CCO_PADRE_NOMBRE,
+		
+		CCO_HIJO.Id_CCo						AS CCO_HIJO, 
+		CCO_HIJO.CCo_Nombre					AS CCO_HIJO_NOMBRE
+FROM			Tbl_ContratoCompraAloja CCO_PADRE
+	LEFT JOIN	Tbl_ContratoCupoAloja	CCU_PADRE	ON (CCU_PADRE.Id_CCu = CCO_PADRE.Id_Ccu) AND (CCO_PADRE.Id_CcuExtranetPropio = CCO_PADRE.Id_Ccu)
+	LEFT JOIN	Tbl_ContratoCompraAloja CCO_HIJO	ON CCO_HIJO.Id_Ccu = CCO_PADRE.Id_Ccu
+	LEFT JOIN	Tbl_IDiNAlo				INA			ON INA.Id_Alo = CCU_PADRE.Id_Alo AND INA.Id_Idi = 'ES'
+WHERE 
+	1 = 1
+	AND CCU_PADRE.Ccu_Activo = 1
+	AND CCO_PADRE.CCo_Activo = 1 
+	AND CCO_HIJO.CCo_Activo = 1
+	AND CCO_HIJO.Id_CcuExtranetPropio IS NULL
+ORDER BY
+CCO_PADRE.Id_Alo DESC
