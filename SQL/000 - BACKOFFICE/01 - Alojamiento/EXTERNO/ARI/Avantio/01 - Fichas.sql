@@ -2,8 +2,8 @@ USE BD_Nincoming
 
 DECLARE @PROV AS varchar(10); SET @PROV = 'AVT';
 DECLARE @CODHOTEL INT; SET @CODHOTEL = 337614;
-DECLARE @SUP INT; SET @SUP = 1;
-DECLARE @CodCliente varchar(10); SET @CodCliente = 'W2M'
+--DECLARE @SUP INT; SET @SUP = 1;
+--DECLARE @CodCliente varchar(10); SET @CodCliente = 'W2M'
 
 --[FICHAS]--
 SELECT COUNT(*) AS [FICHAS]

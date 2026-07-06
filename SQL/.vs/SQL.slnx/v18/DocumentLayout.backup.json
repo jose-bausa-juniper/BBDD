@@ -1,20 +1,7 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\jose.bausa\\OneDrive\\GitHub\\BausaGarcia\\juniper\\SQL\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jose.bausa\\OneDrive\\GitHub\\BausaGarcia\\juniper\\SQL\\000 - BACKOFFICE\\01 - Alojamiento\\PUSH JUNIPER\\Importacion Reservas\\Extranet Juniper\\AVANTIO\\4_Info.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:000 - BACKOFFICE\\01 - Alojamiento\\PUSH JUNIPER\\Importacion Reservas\\Extranet Juniper\\AVANTIO\\4_Info.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jose.bausa\\OneDrive\\GitHub\\BausaGarcia\\juniper\\SQL\\000 - BACKOFFICE\\01 - Alojamiento\\PUSH JUNIPER\\Importacion Reservas\\Extranet Juniper\\AVANTIO\\1_No_Importadas.SQL||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:000 - BACKOFFICE\\01 - Alojamiento\\PUSH JUNIPER\\Importacion Reservas\\Extranet Juniper\\AVANTIO\\1_No_Importadas.SQL||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jose.bausa\\OneDrive\\GitHub\\BausaGarcia\\juniper\\SQL\\000 - BACKOFFICE\\01 - Alojamiento\\PUSH JUNIPER\\Importacion Reservas\\Extranet Juniper\\AVANTIO\\3_Mal_Importadas.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:000 - BACKOFFICE\\01 - Alojamiento\\PUSH JUNIPER\\Importacion Reservas\\Extranet Juniper\\AVANTIO\\3_Mal_Importadas.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\Users\\jose.bausa\\OneDrive - Juniper Group\\BBDD\\SQL\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -22,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -31,42 +18,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "1_No_Importadas.SQL - BD_Nincoming.db.jun.BD_Nincoming (JUNIPER\\jose.bausa (740))",
-              "DocumentMoniker": "C:\\Users\\jose.bausa\\OneDrive\\GitHub\\BausaGarcia\\juniper\\SQL\\000 - BACKOFFICE\\01 - Alojamiento\\PUSH JUNIPER\\Importacion Reservas\\Extranet Juniper\\AVANTIO\\1_No_Importadas.SQL",
-              "RelativeDocumentMoniker": "000 - BACKOFFICE\\01 - Alojamiento\\PUSH JUNIPER\\Importacion Reservas\\Extranet Juniper\\AVANTIO\\1_No_Importadas.SQL",
-              "ToolTip": "C:\\Users\\jose.bausa\\OneDrive\\GitHub\\BausaGarcia\\juniper\\SQL\\000 - BACKOFFICE\\01 - Alojamiento\\PUSH JUNIPER\\Importacion Reservas\\Extranet Juniper\\AVANTIO\\1_No_Importadas.SQL - BD_Nincoming.db.jun.BD_Nincoming (JUNIPER\\jose.bausa (740))",
-              "RelativeToolTip": "000 - BACKOFFICE\\01 - Alojamiento\\PUSH JUNIPER\\Importacion Reservas\\Extranet Juniper\\AVANTIO\\1_No_Importadas.SQL - BD_Nincoming.db.jun.BD_Nincoming (JUNIPER\\jose.bausa (740))",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2026-05-22T06:33:44.996Z",
-              "EditorCaption": " - BD_Nincoming.db.jun.BD_Nincoming (JUNIPER\\jose.bausa (740))"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "3_Mal_Importadas.sql - BD_Nincoming.db.jun.BD_Nincoming (JUNIPER\\jose.bausa (418))",
-              "DocumentMoniker": "C:\\Users\\jose.bausa\\OneDrive\\GitHub\\BausaGarcia\\juniper\\SQL\\000 - BACKOFFICE\\01 - Alojamiento\\PUSH JUNIPER\\Importacion Reservas\\Extranet Juniper\\AVANTIO\\3_Mal_Importadas.sql",
-              "RelativeDocumentMoniker": "000 - BACKOFFICE\\01 - Alojamiento\\PUSH JUNIPER\\Importacion Reservas\\Extranet Juniper\\AVANTIO\\3_Mal_Importadas.sql",
-              "ToolTip": "C:\\Users\\jose.bausa\\OneDrive\\GitHub\\BausaGarcia\\juniper\\SQL\\000 - BACKOFFICE\\01 - Alojamiento\\PUSH JUNIPER\\Importacion Reservas\\Extranet Juniper\\AVANTIO\\3_Mal_Importadas.sql - BD_Nincoming.db.jun.BD_Nincoming (JUNIPER\\jose.bausa (418))",
-              "RelativeToolTip": "000 - BACKOFFICE\\01 - Alojamiento\\PUSH JUNIPER\\Importacion Reservas\\Extranet Juniper\\AVANTIO\\3_Mal_Importadas.sql - BD_Nincoming.db.jun.BD_Nincoming (JUNIPER\\jose.bausa (418))",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2026-05-22T06:38:40.8Z",
-              "EditorCaption": " - BD_Nincoming.db.jun.BD_Nincoming (JUNIPER\\jose.bausa (418))"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "4_Info.sql - BD_Nincoming.db.jun.BD_Nincoming (JUNIPER\\jose.bausa (265))",
-              "DocumentMoniker": "C:\\Users\\jose.bausa\\OneDrive\\GitHub\\BausaGarcia\\juniper\\SQL\\000 - BACKOFFICE\\01 - Alojamiento\\PUSH JUNIPER\\Importacion Reservas\\Extranet Juniper\\AVANTIO\\4_Info.sql",
-              "RelativeDocumentMoniker": "000 - BACKOFFICE\\01 - Alojamiento\\PUSH JUNIPER\\Importacion Reservas\\Extranet Juniper\\AVANTIO\\4_Info.sql",
-              "ToolTip": "C:\\Users\\jose.bausa\\OneDrive\\GitHub\\BausaGarcia\\juniper\\SQL\\000 - BACKOFFICE\\01 - Alojamiento\\PUSH JUNIPER\\Importacion Reservas\\Extranet Juniper\\AVANTIO\\4_Info.sql - BD_Nincoming.db.jun.BD_Nincoming (JUNIPER\\jose.bausa (265))",
-              "RelativeToolTip": "000 - BACKOFFICE\\01 - Alojamiento\\PUSH JUNIPER\\Importacion Reservas\\Extranet Juniper\\AVANTIO\\4_Info.sql - BD_Nincoming.db.jun.BD_Nincoming (JUNIPER\\jose.bausa (265))",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2026-05-22T06:41:47.351Z",
-              "EditorCaption": " - BD_Nincoming.db.jun.BD_Nincoming (JUNIPER\\jose.bausa (265))"
             }
           ]
         }

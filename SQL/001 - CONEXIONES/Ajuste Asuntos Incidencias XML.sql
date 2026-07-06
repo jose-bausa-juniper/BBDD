@@ -1,8 +1,9 @@
 SELECT
 	i.Id_incidencia										AS [Incidencia],
     agencias.dbo.converthtml(i.I_asumpte)				AS [Titulo],
-	CONCAT('Soporte XML - [',be_wsi.WSI_Nombre,'] - [',be_iws.Int_Nombre,']'),
---	p.P_nom												AS [Proyecto],
+	CONCAT('Soporte XML - [',be_wsi.WSI_Nombre,'] - [',be_iws.Int_Nombre,']')	AS [Nuevo Titulo],
+	--CONCAT('UPDATE agencias.dbo.INCIDENCIA SET I_asumpte = ''Soporte XML - [',be_wsi.WSI_Nombre,'] - [',be_iws.Int_Nombre,']'' WHERE Id_incidencia = ',Id_incidencia),
+	--p.P_nom												AS [Proyecto],
 	be_wsi.WSI_Nombre									AS [API],
 	be_iws.Int_Nombre									AS [Integrador]
 FROM 
@@ -14,9 +15,12 @@ FROM
 WHERE
 	1 = 1
     AND i.A_codi = 18224 -- W2M
-	AND i.I_estat <> 'C' -- (E - En curso) 
+	--AND i.I_estat <> 'C' -- (E - En curso) 
 	AND i.I_ConexionAgencia = 0
 	AND ti.TI_id = 16 -- (16 - Soporte XML)
 	AND i.I_asumpte <> CONCAT('Soporte XML - [',be_wsi.WSI_Nombre,'] - [',be_iws.Int_Nombre,']')
+	AND be_wsi.WSI_Nombre IS NOT NULL
+	AND be_iws.Int_Nombre IS NOT NULL
+
 ORDER BY
 	[API]

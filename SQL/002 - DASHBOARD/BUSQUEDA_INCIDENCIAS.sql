@@ -26,9 +26,9 @@ FROM			agencias.dbo.incidencia					i
 	LEFT JOIN	agencias.dbo.INCIDENCIA_INTWSAGENCIA	iaws	ON iaws.Id_incidencia = i.Id_incidencia
 
 WHERE 1 = 1
-	AND (agencias.dbo.converthtml(i.I_asumpte) LIKE '%jet2%')
+	AND (agencias.dbo.converthtml(i.I_asumpte) LIKE '%descartada%')
 	--AND iaws.Id_Cli = 81311
-	AND a.A_Nom = 'W2M (World 2 Meet)'
+	--AND a.A_Nom = 'W2M (World 2 Meet)'
 
 
 GROUP BY 

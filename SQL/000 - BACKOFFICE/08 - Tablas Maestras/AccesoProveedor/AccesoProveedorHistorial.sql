@@ -4,7 +4,7 @@ DECLARE
 	--@HASTA DATETIME = '2025-05-05 12:50:00';
 	--@DESDE DATETIME = GETDATE()-1,
 	--@HASTA DATETIME = GETDATE();
-	@DESDE DATETIME = '2026-05-03 11:00:00',
+	@DESDE DATETIME = '2026-06-23 00:00:00',
 	@HASTA DATETIME = GETDATE();
 
 SELECT TOP 1000
@@ -74,11 +74,11 @@ FROM
 WHERE
 	1 = 1
 	AND LAAP.Lap_fecha BETWEEN @DESDE AND @HASTA
-	AND LAAP.Lap_Pro = 'AVT'
-	--AND (
-	--		(CAST(LAAP.Lap_XML AS XML).value('(/historial/his/@prm)[1]','varchar(max)') = 'True' AND LAAP.Lap_Accion = 'NEW')
-	--	OR	(CAST(LAAP.Lap_XML AS XML).value('(/historial/his/@prm)[1]','varchar(max)') = 'False' AND LAAP.Lap_Accion = 'DEL')
-	--	)
-	--AND LAAP.Lap_Accion IN ('NEW','ACT')
+	--AND LAAP.Lap_Pro = 'AVT'
+	AND (
+			(CAST(LAAP.Lap_XML AS XML).value('(/historial/his/@prm)[1]','varchar(max)') = 'True' AND LAAP.Lap_Accion = 'NEW')
+		OR	(CAST(LAAP.Lap_XML AS XML).value('(/historial/his/@prm)[1]','varchar(max)') = 'False' AND LAAP.Lap_Accion = 'DEL')
+		)
+	AND LAAP.Lap_Accion IN ('NEW','ACT')
 ORDER BY
 	LAAP.Id_Lap DESC

@@ -10,7 +10,7 @@ RESERVAS_JET2_AVT AS(
     WHERE 
         DRe_CodigoSE = 57
         AND DRe_IdAlo LIKE '%AVT|%'
-        AND FecCre >= '2026-06-04'
+        AND FecCre >= '2026-06-14'
 ),
 
 RESERVAS_JET2_AVT_VILLAS AS (
@@ -176,7 +176,6 @@ FROM
     RESERVA_JET2_VS_W2M 
 WHERE 
     1 = 1
-
     --AND Id_Res IS NULL --> SIN LOCALIZADOR JUNIPER
     --AND LRe_ExtLocalizador IS NULL --> SIN LOCALIZADOR AVT
     --AND ReservationDate_JET2 IS NULL --> SIN XML DE DESCARGA
@@ -187,11 +186,10 @@ WHERE
     --    AND (Res_Estado NOT IN ('Pag','Can','CaC') OR  Id_Res IS NULL))
 
     --OR  (LOC_JET2 IN (
-    --                '1WNY3H',
-    --                'HRLMK4',
-    --                '922B9V',
-    --                'NRXKG6'
+    --                'T7NTWX',
+    --                'J3C3P5'
     --                ))
+    AND Ref_Age_JET2 = '20982444/S26H'
 
 ORDER BY
     FULL_LOC_JET2 DESC

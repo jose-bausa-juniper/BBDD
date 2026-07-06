@@ -27,19 +27,32 @@ SELECT
 	DAC.Id_Dag		AS [ID_Regla_Desconexión],
 	DAC.Dag_Nombre	AS [Nombre_Regla],
 	CASE DAC.Dag_Transaccion 
-		WHEN '1' THEN 'AVAIL'
+		WHEN '1'	THEN 'Disponibilidad'
+		WHEN '2'	THEN 'Reserva'
+		WHEN '17'	THEN 'PoliticasCancelacion'
 		ELSE CAST(DAC.Dag_Transaccion AS VARCHAR (MAX))
-	END AS [Transaccion]
+	END AS [Transaccion],
+	DAN.Dan_Activo,
+	DAN.Dan_MailEmisor,
+	DAND.Dad_MailDestino,
+	DANC.Dat_Texto,
+	DANC.Id_Idi
+
 
 
 FROM
-				@PRODUCTALO								PA
-	LEFT JOIN	Tbl_DesconexionAutomaticaConfiguracion	DAC	ON DAC.Dag_Proveedor = PA.MODULE
-	LEFT JOIN	Tbl_DesconexionAutomaticaError			DAE	ON DAE.Id_Dag = DAC.Id_Dag AND DAE.Dae_TipoError = 429
+				@PRODUCTALO												PA
+	LEFT JOIN	Tbl_DesconexionAutomaticaConfiguracion					DAC		ON DAC.Dag_Proveedor = PA.MODULE
+	LEFT JOIN	Tbl_DesconexionAutomaticaError							DAE		ON DAE.Id_Dag = DAC.Id_Dag AND DAE.Dae_TipoError = 429
+	LEFT JOIN	Tbl_DesconexionAutomaticaNotificacion					DAN		ON DAN.Id_Dag = DAC.Id_Dag
+	LEFT JOIN	Tbl_DesconexionAutomaticaNotificacionContenido			DANC	ON DANC.id_Dan = DAN.id_Dan AND DANC.Id_Idi = 'ES'
+	LEFT JOIN	Tbl_DesconexionAutomaticaNotificacionDestinatario		DAND	ON DAND.id_Dan = DAN.id_Dan
+
 WHERE
 	1 = 1
 	AND (DAC.Id_Dag IS NULL OR (DAE.Id_Dag IS NULL AND DAC.Dag_Transaccion = 1))
 	AND ((DAC.Dag_Borrado = 0 AND DAC.Dag_Activo = 1) OR (DAC.Dag_Borrado IS NULL AND DAC.Dag_Activo IS NULL))
+	--AND DAN.Dan_Activo = 1
 ORDER BY
 	DAC.Id_DAG,
 	MODULE

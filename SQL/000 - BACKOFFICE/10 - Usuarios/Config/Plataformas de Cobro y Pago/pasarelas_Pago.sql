@@ -1,6 +1,9 @@
 USE BD_Nincoming
 
 SELECT 
+	cpp.Fecmod,
+	cpp.usrmod,
+	cpp.usrcre,
 	CONCAT('CFG-',cpp.Id_PSP)										AS [CFG],
 	CASE cpp.PSP_Tipo
 		WHEN 26 THEN 'W2MGTW'

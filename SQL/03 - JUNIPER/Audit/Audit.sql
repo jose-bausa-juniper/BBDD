@@ -1,6 +1,6 @@
 Declare @AuditTable varchar(100)
 declare @AuditDate as varchar(20);
-Set @AuditDate = '2025-06-05';
+Set @AuditDate = '2026-06-15';
 declare @query nvarchar(max);
 declare @querycount nvarchar(max);
 declare @RowsAudit int;

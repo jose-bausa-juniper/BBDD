@@ -1,15 +1,15 @@
 USE BD_Nincoming;
 
+WITH INTEGRADORES_CONFIGURADOS AS(
+
 SELECT 
-    iws.Int_IdIntegradorUnico       AS [IntUnico],
+    --iws.Int_IdIntegradorUnico       AS [IntUnico],
     iws.int_nombre                  AS [Nombre Integrador],
     iws.Id_Int                      AS [IntW2M],
     iws.int_activo                  AS [Integrador Activo],
     iws.Int_ChannelManagerExtranet  AS [Channel Manager],
-
     ISNULL(c.AgenciasConectadas, 0) AS [Agencias Conectadas],
     ISNULL(aws.UsuariosAdminWS, 0)  AS [Usuarios Adm WS Conectados],
-
     ISNULL(u.UsuariosExtranet, 0)   AS [Usuario Extranet Conectados]
 
 FROM Tbl_IntegradorWS iws
@@ -41,12 +41,17 @@ LEFT JOIN (
     GROUP BY Id_Int
 ) aws ON aws.Id_Int = iws.Id_Int
 
+)
+
+SELECT
+    *
+FROM
+    INTEGRADORES_CONFIGURADOS
 WHERE 
     1 = 1
-    --iws.int_activo = 1
-    --AND iws.Int_ChannelManagerExtranet = 1
-    --AND iws.int_nombre LIKE '%Juniper%'
-
-ORDER BY
-    iws.Int_IdIntegradorUnico,
-    iws.int_nombre;
+    --AND [Integrador Activo] = 1
+    --AND [Agencias Conectadas] <> 0
+    --AND [Usuario Extranet Conectados] <> 0
+    --AND [Usuarios Adm WS Conectados] = 1
+    --AND [Channel Manager] = 1
+    AND [Nombre Integrador] <> 'ZZ - Deactivated'
