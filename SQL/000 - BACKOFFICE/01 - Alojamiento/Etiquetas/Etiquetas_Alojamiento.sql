@@ -7,14 +7,15 @@ DECLARE @ETIQUETA_HOTEL TABLE (Origen_Etiqueta NVARCHAR(510), Id_Etiqueta INT, O
 
 INSERT INTO @ETIQUETAS
 SELECT 
-	EAU.id_EAU		AS [Id_Etiqueta], 
-	EAU.EAU_Orden	AS [Orden],
-	INE.IEI_Desc	AS [Etiqueta]
+--	EAU.EAU_Orden	AS [Orden],
+	INE.IEI_Desc	AS [Etiqueta],
+	EAU.id_EAU		AS [Id_Etiqueta] 
+
 FROM 
 				Tbl_EtiquetaAlojaUnicoCliente	EAU		
 	LEFT JOIN	Tbl_IdiNEtiqueta				INE		ON (EAU.id_EAU = INE.id_EAU AND INE.id_Idi = 'es')
 ORDER BY
-	Orden
+	EAU.EAU_Orden
 
 /*ETIQUETAS POR HOTEL JP*/
 INSERT INTO @ETIQUETA_HOTEL_JP
@@ -51,7 +52,7 @@ FROM
 	LEFT JOIN	vwQlik_JP_Externos				AE		ON (AE.AlE_Cod = A.Id_Alo AND AE.AlE_Prov = 'J107')
 WHERE 
 	1 = 1
-	AND A.Alo_borrado = 0
+	AND AE.ALU_JPCode IS NULL
 GROUP BY 
 	EAU.id_EAU,
 	EAU.EAU_Orden,

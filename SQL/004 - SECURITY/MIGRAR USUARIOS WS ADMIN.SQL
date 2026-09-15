@@ -22,7 +22,7 @@ FROM
 WHERE 
 	1 = 1
 	AND A.Adm_Activo = 1
-	AND A.fecha_ultimo_login > '2025-01-01'
+	AND A.fecha_ultimo_login > '2026-07-30'
 GROUP BY
 	A.Id_Adm,
 	A.Adm_Login,
@@ -32,4 +32,3 @@ GROUP BY
 	A.fecha_ultimo_login
 --HAVING
 --	MAX(LP.COUNT_LOGS) IS NULL
-

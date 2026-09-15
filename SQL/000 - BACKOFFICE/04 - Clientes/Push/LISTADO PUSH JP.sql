@@ -33,6 +33,7 @@ WHERE 1=1
 AND CCR.Cli_WSRates = 1
 --AND IWS.Int_Nombre = 'TUI Group'
 --AND c.Id_Cli = 16664
+AND c.Cli_Nombre Like '%reis%'
 
 GROUP BY
 CCWSR.Id_Cws,

@@ -4,15 +4,15 @@ DECLARE @USUARIO VARCHAR(50) = 'Jose Bausá';
 DECLARE @GRUPO VARCHAR(50) = 'PM Project Management';
 DECLARE @EQUIPO VARCHAR(50) = 'PM W2M';
 DECLARE @INCIDENCIAS TABLE (ID INT); INSERT INTO @INCIDENCIAS (ID) VALUES 
-(1105281),
-(1106112),
-(1106803),
-(1110191),
-(1110596),
-(1110845),
-(1111366),
-(1111727),
-(1111730);
+(1116592);
+-- (1106112),
+-- (1106803),
+-- (1110191),
+-- (1110596),
+-- (1110845),
+-- (1111366),
+-- (1111727),
+-- (1111730);
 
 WITH INCIDENCIAS AS (
     SELECT
@@ -202,7 +202,8 @@ SELECT
     [PRESUPUESTO ACEPTADO],
     [CREADOR INCIDENCIA],[FECHA CREACION INCIDENCIA], [FECHA ENVIO PRESUPUESTO], [FECHA ACEPTACION PRESUPUESTO], [FECHA INICIO PREVISTA], [FECHA ULTIMO COMENTARIO], [DIAS SIN MOVIMIENTO]
     ,[TOTAL COMENTARIOS],[NUM COMENTARIOS EXTERNOS],[NUM COMENTARIOS INTERNOS]
-    ,[COMENTARIO INICIAL],[COMENTARIOS EXTERNOS], [COMENTARIOS INTERNOS]
+    ,[COMENTARIO INICIAL]
+    ,[COMENTARIOS EXTERNOS], [COMENTARIOS INTERNOS]
 FROM
     FINAL
 WHERE   1 = 1
@@ -231,7 +232,7 @@ WHERE   1 = 1
         --AND [EQUIPO RESPONSABLE] <> @EQUIPO                                                                                                                       /*EQUIPO ASIGNADO*/
 
         /*RESPUESTA*/
-        AND [PDTE RS] = 1                                                                                                                                         /*PENDIENTE RESPUESTA*/
+        --AND [PDTE RS] = 1                                                                                                                                         /*PENDIENTE RESPUESTA*/
 
         /*ESTADOS*/
         --AND [ESTADO] IN ('Pend Cliente', 'Pend Proveedor')
@@ -240,10 +241,10 @@ WHERE   1 = 1
         
         /*OTRAS*/
         --AND [TIPO INCIDENCIA] = ' 2. Soporte'
-        --AND [ID INCIDENCIA] = 1087487
+        AND [ID INCIDENCIA] IN (SELECT * FROM @INCIDENCIAS)
 ORDER BY
     --[ID INCIDENCIA] DESC,
     [TIPO INCIDENCIA],
     [RESPONSABLE ASIGNADO]
 
---FOR JSON PATH, ROOT('INCIDENCIAS');
+FOR JSON PATH, ROOT('INCIDENCIAS');

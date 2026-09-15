@@ -16,5 +16,5 @@ WHERE
 	1 = 1
     AND a_ti.TI_id = 16 -- (16 - Soporte XML)
     AND a_i.A_codi = 18224 
-    AND a_i.I_estat <> 'C' -- (E - En curso) 
+    --AND a_i.I_estat <> 'C' -- (E - En curso) 
     AND a_i.I_ConexionAgencia = 0 

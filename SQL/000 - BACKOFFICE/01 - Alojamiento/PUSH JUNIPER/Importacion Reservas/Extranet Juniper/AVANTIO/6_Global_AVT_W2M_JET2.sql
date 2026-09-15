@@ -181,15 +181,15 @@ WHERE
     --AND ReservationDate_JET2 IS NULL --> SIN XML DE DESCARGA
     --AND LOC_JET2 = 'R5YDN5' --> Duplicidad Linea en W2M por Rebook de Mize
 
-    --AND (Estado_Reserva_JET2 <> 'CN' 
-    --    AND Estado_Linea_JET2 <> 'CN'
-    --    AND (Res_Estado NOT IN ('Pag','Can','CaC') OR  Id_Res IS NULL))
+    AND (Estado_Reserva_JET2 <> 'CN' 
+        AND Estado_Linea_JET2 <> 'CN'
+        AND (Res_Estado NOT IN ('Pag','Can','CaC') OR  Id_Res IS NULL))
 
-    --OR  (LOC_JET2 IN (
-    --                'T7NTWX',
-    --                'J3C3P5'
+    --AND  (LOC_JET2 IN (
+    --                '4VY1ZL',
+    --                'XJW9X7'
     --                ))
-    AND Ref_Age_JET2 = '20982444/S26H'
+    --AND Ref_Age_JET2 = '20308985/S26H'
 
 ORDER BY
     FULL_LOC_JET2 DESC

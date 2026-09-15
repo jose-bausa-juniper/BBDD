@@ -45,6 +45,6 @@ WHERE
 	AND i.I_ConexionAgencia = 0
     --AND pm.PM_estado IN (0,1,3) -- 0=Live;1=Standby;2=Cancelado;3=Unset
     --AND p.P_estat IN (6,3) -- 3=Implantacion;6=Producción;
-    AND (i.P_Codi = 12772 OR i.P_Codi IS NULL)
+    --AND (i.P_Codi = 12772 OR i.P_Codi IS NULL)
 ORDER BY
     i.Id_incidencia DESC

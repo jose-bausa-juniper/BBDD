@@ -49,9 +49,9 @@ FROM
     INTEGRADORES_CONFIGURADOS
 WHERE 
     1 = 1
-    --AND [Integrador Activo] = 1
+    AND [Integrador Activo] = 1
     --AND [Agencias Conectadas] <> 0
     --AND [Usuario Extranet Conectados] <> 0
     --AND [Usuarios Adm WS Conectados] = 1
-    --AND [Channel Manager] = 1
-    AND [Nombre Integrador] <> 'ZZ - Deactivated'
+    --AND NOT  ([Channel Manager] = 1 AND [Agencias Conectadas] = 0)
+    --AND [Nombre Integrador] <> 'ZZ - Deactivated'

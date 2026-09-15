@@ -8,10 +8,10 @@ from
 	Tbl_ConfiguracionTarjetaVirtual CTV
 WHERE 
 	1 = 1
-	--AND Ctv_Activa = 1	
-	--AND id_Ctv = 1 
-	--AND Ctv_Obsoleta = 0
-	--AND Ctv_Provider = 'BavelEPay'
+	AND Ctv_Activa = 0	
+	AND id_Ctv = 32
+	AND Ctv_Obsoleta = 1
+	AND Ctv_Provider = 'BavelEPay'
 	--AND Ctv_Provider = 'W2M'
 	--AND CAST(DECOMPRESS(Ctv_Atributos) AS varchar(MAX)) LIKE '%EFPLNJ84CHZPLUM2-W2M-638884244161564927%'
 ORDER BY

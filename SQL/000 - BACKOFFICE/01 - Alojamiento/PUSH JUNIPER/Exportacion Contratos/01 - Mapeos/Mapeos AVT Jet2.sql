@@ -51,9 +51,17 @@ INSERT INTO @VILLAS
 SELECT 
 ----- PROVEEDOR -----
 --CombSE.Cbs_Codigo,
+ASPMH.FecMod																				AS	[FECMOD_MAP_HOTEL],
+--ASPMH.FecCre																				AS	[FECCRE_MAP_HOTEL],
+--ASE.Fecmod																					AS	[FECMOD_MAP_HOTEL1],
+--ASE.Feccre																				AS	[FECCRE_MAP_HOTEL1],
 ASPMH.SPM_CodProv																			AS	[PROVEEDOR],
 ASPMH.SPM_CodHotel																			AS	[ID_ALO_AVT],
 V.AlE_Nombre																				AS	[NOM_ALO_AVT],
+ASPMC.FecMod																				AS	[FECMOD_MAP_CONTRACT],
+--ASPMC.FecCre																				AS	[FECCRE_MAP_CONTRACT],
+--CSE.Fecmod																					AS	[FECMOD_MAP_CONTRACT1],
+--CSE.Feccre																				AS	[FECCRE_MAP_CONTRACT1],
 ASPMC.SPM_RatePlanCode																		AS	[ID_CON_AVT],
 ASPMC.SPM_RatePlanCode																		AS	[NOM_CON_AVT],
 ASPMHab.SPM_CodHabitacion																	AS	[ID_HAB_AVT],
