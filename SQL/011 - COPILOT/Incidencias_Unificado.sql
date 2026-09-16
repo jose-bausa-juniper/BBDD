@@ -4,7 +4,7 @@ DECLARE @USUARIO VARCHAR(50) = 'Jose Bausá';
 DECLARE @GRUPO VARCHAR(50) = 'PM Project Management';
 DECLARE @EQUIPO VARCHAR(50) = 'PM W2M';
 DECLARE @INCIDENCIAS TABLE (ID INT); INSERT INTO @INCIDENCIAS (ID) VALUES 
-(1116592);
+(1085625);
 -- (1106112),
 -- (1106803),
 -- (1110191),
@@ -228,7 +228,7 @@ WHERE   1 = 1
 
         /*USUARIOS*/
         --AND (([USUARIO ASIGNADO] = @USUARIO) OR ([RESPONSABLE ASIGNADO] = @USUARIO))                                                                             /*USUARIO ASIGNADO O RESPONSABLE*/
-        AND (([EQUIPO ASIGNADO] = @EQUIPO) OR ([EQUIPO RESPONSABLE] = @EQUIPO))                                                                                    /*EQUIPO ASIGNADO*/
+        --AND (([EQUIPO ASIGNADO] = @EQUIPO) OR ([EQUIPO RESPONSABLE] = @EQUIPO))                                                                                    /*EQUIPO ASIGNADO*/
         --AND [EQUIPO RESPONSABLE] <> @EQUIPO                                                                                                                       /*EQUIPO ASIGNADO*/
 
         /*RESPUESTA*/
