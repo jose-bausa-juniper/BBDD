@@ -2,9 +2,9 @@
 USE BD_Nincoming
 
 SELECT 
-CCWSR.Id_Cws,
+--CCWSR.Id_Cws,
 C.Id_Cli AS Id_Cli,
-C.Fecmod,
+--C.Fecmod,
 C.Cli_Nombre AS Cliente,
 C.Cli_Activa AS Cli_Activa,
 IWS.Int_Nombre AS Integrador,
@@ -33,7 +33,7 @@ WHERE 1=1
 AND CCR.Cli_WSRates = 1
 --AND IWS.Int_Nombre = 'TUI Group'
 --AND c.Id_Cli = 16664
-AND c.Cli_Nombre Like '%reis%'
+--AND c.Cli_Nombre Like '%reis%'
 
 GROUP BY
 CCWSR.Id_Cws,
