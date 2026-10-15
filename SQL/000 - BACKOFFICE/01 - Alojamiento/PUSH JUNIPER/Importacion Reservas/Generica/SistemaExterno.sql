@@ -18,5 +18,7 @@ FROM
 WHERE
 	1 = 1
 	AND CC.Coc_Url LIKE '%jet2%'
+ORDER BY
+URL_Retrive
 
 
